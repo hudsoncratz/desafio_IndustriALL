@@ -12,16 +12,16 @@ export default {
 
         const eventsRepository = getRepository(Event);
         
-        const schema = Yup.object().shape({
-            events: Yup.array(Yup.object().shape({
-                eventDescription: Yup.string().required('O campo acontecimento é obrigatório')
-                })
-            )
-        });
+        // const schema = Yup.object().shape({
+        //     events: Yup.array(Yup.object().shape({
+        //         eventDescription: Yup.string().required('O campo acontecimento é obrigatório')
+        //         })
+        //     )
+        // });
 
-        await schema.validate(events, {
-            abortEarly: false,
-        })
+        // await schema.validate(events, {
+        //     abortEarly: false,
+        // })
         
         events.map( async (event: Event) => { 
             eventsRepository.create(event)
