@@ -24,11 +24,16 @@ export default function CreateOccurrence() {
       }
   
     })
-    console.log(events);
+    
+    let responseEvent = await api.post('events', events);
+    
+    console.log(response);
+    console.log(responseEvent);
 
-    let respnseEvent = await api.post('events', events);
-
-    console.log(respnseEvent);
+    setTitle('');
+    setInitDate('');
+    setEndDate('');
+    setArrayEvents([]);
 
     history.push('/');
   }
@@ -92,21 +97,18 @@ export default function CreateOccurrence() {
                 </button>
               </div>
 
-              {arrayEvents.map(event => {
-                  return  <div className="input-block">
+              {arrayEvents.map((event, index)=> {
+                  return  <div key={index} className="input-block">
                             <label>{event.eventDescription}</label> 
                           </div>
                 })}
-              
             </div>
           </fieldset>
           <button className="confirm-button" type="submit">
-            Confirmar
+            Salvar
           </button>
         </form>
       </main>
     </div>
   );
 }
-
-// return `https://a.tile.openstreetmap.org/${z}/${x}/${y}.png`;
